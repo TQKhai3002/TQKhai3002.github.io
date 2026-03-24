@@ -3,106 +3,630 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - CV</title>
+    <title>Tran Quang Khai</title>
+    <meta
+        name="description"
+        content="Tran Quang Khai's portfolio and resume, covering machine learning, computer vision, experience, projects, and contact details."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
     <style>
+        :root {
+            --bg: #f7f8fa;
+            --surface: #ffffff;
+            --text: #122033;
+            --muted: #526173;
+            --line: #d8e0e8;
+            --accent: #0d5aa7;
+            --accent-soft: #edf4fb;
+            --shadow: 0 14px 40px rgba(18, 32, 51, 0.06);
+            --max-width: 980px;
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top center, rgba(13, 90, 167, 0.09), transparent 32rem),
+                linear-gradient(180deg, rgba(13, 90, 167, 0.03), transparent 18rem),
+                var(--bg);
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1em 0;
-            text-align: center;
+
+        p,
+        h1,
+        h2,
+        h3 {
+            margin-top: 0;
         }
-        .main-content {
-            background: #fff;
-            padding: 2em;
-            margin: 1em 0;
+
+        .page {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1.5rem;
         }
-        h1, h2, h3 {
-            color: #333;
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            margin-bottom: 1.5rem;
+            padding-top: 0.5rem;
         }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.95rem 1.2rem;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(216, 224, 232, 0.95);
+            border-radius: 999px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 28px rgba(18, 32, 51, 0.05);
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible,
+        .contact-link:hover,
+        .contact-link:focus-visible,
+        .text-link:hover,
+        .text-link:focus-visible {
+            color: var(--accent);
+        }
+
+        .contact-link {
+            font-weight: 700;
+        }
+
+        .hero,
         .section {
-            margin-bottom: 1.5em;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
         }
-        .section h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 0.5em;
+
+        .hero {
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 2.4rem 2rem 2rem;
         }
-        .section ul {
-            list-style-type: none;
+
+        h1 {
+            margin-bottom: 0.4rem;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: var(--accent);
+        }
+
+        .hero-copy {
+            max-width: 42rem;
+            margin: 1.2rem auto 0;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        .hero-actions,
+        .contact-row,
+        .skills-list,
+        .section-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .button,
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.9rem;
+            padding: 0.7rem 1rem;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        .button {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 10px 24px rgba(13, 90, 167, 0.18);
+        }
+
+        .button-secondary,
+        .pill {
+            background: #fff;
+            border: 1px solid var(--line);
+            color: var(--text);
+        }
+
+        .button:hover,
+        .button-secondary:hover {
+            transform: translateY(-1px);
+        }
+
+        .hero-actions {
+            justify-content: center;
+            margin: 1.5rem 0 0;
+        }
+
+        .contact-row {
+            justify-content: center;
+            align-items: center;
+            gap: 1.1rem;
+            row-gap: 0.7rem;
+            color: var(--accent);
+            font-size: 0.96rem;
+        }
+
+        .pill {
+            min-height: auto;
             padding: 0;
+            border: 0;
+            border-radius: 0;
+            font-weight: 600;
+            gap: 0.35rem;
+            background: transparent;
+            color: var(--accent);
         }
-        .section ul li {
-            margin-bottom: 0.5em;
+
+        .pill svg {
+            width: 0.95rem;
+            height: 0.95rem;
+            flex: none;
+        }
+
+        .hero-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-role {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .two-column {
+            grid-template-columns: 1.1fr 0.9fr;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            margin-bottom: 1rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-header h2 {
+            margin-bottom: 0;
+            font-size: 1.35rem;
+            color: var(--accent);
+        }
+
+        .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--line);
+        }
+
+        .section-copy {
+            margin-bottom: 0;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .item {
+            padding: 1.1rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .item:first-child {
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-header h3 {
+            margin-bottom: 0.25rem;
+            font-size: 1.02rem;
+        }
+
+        .item-header p,
+        .item-meta,
+        .muted {
+            color: var(--muted);
+        }
+
+        .item-meta {
+            min-width: 10rem;
+            text-align: right;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        ul {
+            margin: 0.55rem 0 0;
+            padding-left: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .project-title {
+            color: var(--accent);
+        }
+
+        .project-block + .project-block {
+            margin-top: 1.5rem;
+        }
+
+        .sub-list {
+            margin-top: 0.45rem;
+        }
+
+        .sub-list li + li {
+            margin-top: 0.2rem;
+        }
+
+        .skills-list {
+            flex-direction: column;
+            gap: 0.7rem;
+            color: var(--text);
+        }
+
+        .skills-list strong {
+            color: var(--text);
+        }
+
+        .summary-card {
+            background:
+                linear-gradient(180deg, rgba(13, 90, 167, 0.03), transparent 100%);
+        }
+
+        .project-block,
+        .skills-list > div {
+            position: relative;
+        }
+
+        @media (max-width: 860px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .item-header,
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .item-meta {
+                min-width: 0;
+                text-align: left;
+            }
+
+            .nav {
+                border-radius: 1.2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page {
+                padding: 1rem;
+            }
+
+            .hero,
+            .section {
+                padding: 1.35rem;
+            }
+
+            h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero {
+                text-align: left;
+            }
+
+            .hero-top {
+                align-items: flex-start;
+            }
+
+            .contact-row,
+            .hero-actions {
+                justify-content: flex-start;
+            }
+
+            .hero-copy {
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Your Name</h1>
-        <p>Professional Title</p>
-    </header>
-    <div class="container">
-        <div class="main-content">
-            <div class="section" id="personal-info">
-                <h2>Personal Information</h2>
-                <p><strong>Email:</strong> youremail@example.com</p>
-                <p><strong>Phone:</strong> +123 456 7890</p>
-                <p><strong>Address:</strong> 123 Main Street, Anytown, Anycountry</p>
-            </div>
-            <div class="section" id="education">
-                <h2>Education</h2>
-                <ul>
-                    <li>
-                        <strong>Degree:</strong> Bachelor of Science in Computer Science<br>
-                        <strong>Institution:</strong> University Name<br>
-                        <strong>Year:</strong> 2015 - 2019
-                    </li>
-                    <!-- Add more education details as needed -->
-                </ul>
-            </div>
-            <div class="section" id="work-experience">
-                <h2>Work Experience</h2>
-                <ul>
-                    <li>
-                        <strong>Position:</strong> Software Developer<br>
-                        <strong>Company:</strong> Company Name<br>
-                        <strong>Year:</strong> 2020 - Present<br>
-                        <p>Responsibilities:</p>
+    <div class="page" id="top">
+        <header class="topbar">
+            <nav class="nav" aria-label="Main navigation">
+                <a class="brand" href="#top">Tran Quang Khai</a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#education">Education</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                </div>
+                <a class="contact-link" href="mailto:tquangkhai0302@gmail.com">Email</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero-top">
+                    <h1 id="hero-title">Tran Quang Khai</h1>
+                    <p class="hero-role">Machine Learning / Computer Vision</p>
+                </div>
+                <div class="contact-row" aria-label="Contact information">
+                    <span class="pill">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                            <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/>
+                        </svg>
+                        <span>Ho Chi Minh</span>
+                    </span>
+                    <a class="pill text-link" href="mailto:tquangkhai0302@gmail.com">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 6h16v12H4z"/>
+                            <path d="m4 7 8 6 8-6"/>
+                        </svg>
+                        <span>tquangkhai0302@gmail.com</span>
+                    </a>
+                    <a class="pill text-link" href="tel:+84938514528">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                            <path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1Z"/>
+                        </svg>
+                        <span>+84-938-514-528</span>
+                    </a>
+                    <a class="pill text-link" href="https://www.linkedin.com/in/tqk3002/">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.56a1.96 1.96 0 1 0-3.92 0 1.96 1.96 0 0 0 3.92 0ZM20 13.02c0-3.42-1.83-5.02-4.27-5.02-1.97 0-2.85 1.08-3.35 1.84V8.5H9V20h3.38v-6.4c0-1.69.32-3.32 2.41-3.32 2.06 0 2.09 1.93 2.09 3.43V20H20v-6.98Z"/>
+                        </svg>
+                        <span>tqk3002</span>
+                    </a>
+                    <a class="pill text-link" href="https://github.com/TQKhai3002">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                            <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.79.42-1.31.77-1.61-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.37 1.24-3.21-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 6.32c1.02 0 2.05.14 3.01.41 2.29-1.55 3.29-1.23 3.29-1.23.67 1.69.26 2.94.13 3.25.78.84 1.24 1.9 1.24 3.21 0 4.62-2.82 5.64-5.5 5.94.43.37.82 1.1.82 2.23v3.3c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/>
+                        </svg>
+                        <span>TQKhai3002</span>
+                    </a>
+                </div>
+                <p class="hero-copy">
+                    With a strong foundation in Machine Learning, Deep Learning, and Computer Vision, I aim to pursue
+                    graduate studies to deepen my theoretical understanding and learn to deploy and maintain machine
+                    learning systems in production. I am particularly interested in building automated data and machine
+                    learning pipelines.
+                </p>
+                <div class="hero-actions">
+                    <a class="button" href="#projects">View Projects</a>
+                    <a
+                        class="button button-secondary"
+                        href="./Tran%20Quang%20Khai-Resume.pdf"
+                        download="Tran-Quang-Khai-Resume.pdf"
+                    >Download Resume</a>
+                </div>
+            </section>
+
+            <div class="grid two-column">
+                <section class="section summary-card" id="about">
+                    <div class="section-header">
+                        <h2>Summary</h2>
+                    </div>
+                    <p class="section-copy">
+                        I focus on building practical AI systems with an emphasis on computer vision, model deployment,
+                        and production-oriented pipelines. My recent work spans aesthetic-aware image cropping, real-time
+                        detection systems, and ML-driven automation across research and applied engineering settings.
+                    </p>
+                </section>
+
+                <section class="section" id="education">
+                    <div class="section-header">
+                        <h2>Education</h2>
+                    </div>
+                    <article class="item">
+                        <div class="item-header">
+                            <div>
+                                <h3>University of Information Technology VNUHCM</h3>
+                                <p>Bachelor of Science, Computer Science</p>
+                            </div>
+                            <div class="item-meta">Sep 2021 - Jun 2025</div>
+                        </div>
                         <ul>
-                            <li>Developed web applications using JavaScript, HTML, and CSS.</li>
-                            <li>Collaborated with cross-functional teams to define and achieve project goals.</li>
-                            <!-- Add more responsibilities as needed -->
+                            <li>Current GPA: 8.43/10</li>
+                            <li>Coursework: Artificial Intelligence, Computer Vision, Deep Learning, Data Mining</li>
                         </ul>
-                    </li>
-                    <!-- Add more work experience as needed -->
-                </ul>
+                    </article>
+                </section>
             </div>
-            <div class="section" id="skills">
-                <h2>Skills</h2>
-                <ul>
-                    <li>JavaScript</li>
-                    <li>HTML & CSS</li>
-                    <li>Python</li>
-                    <li>Project Management</li>
-                    <!-- Add more skills as needed -->
-                </ul>
-            </div>
-            <div class="section" id="contact">
-                <h2>Contact Information</h2>
-                <p>If you would like to get in touch, please feel free to email me at <a href="mailto:youremail@example.com">youremail@example.com</a>.</p>
-            </div>
-        </div>
+
+            <section class="section" id="experience">
+                <div class="section-header">
+                    <h2>Experience</h2>
+                </div>
+
+                <article class="item">
+                    <div class="item-header">
+                        <div>
+                            <h3>Lab Assistant</h3>
+                            <p>Multimedia Communications Laboratory</p>
+                        </div>
+                        <div class="item-meta">May 2024 - January 2026</div>
+                    </div>
+                    <ul>
+                        <li>
+                            Conduct research on aesthetic-aware image cropping using Large Language Models such as GPT and
+                            Gemini, contributing to a forthcoming publication in 2025.
+                        </li>
+                        <li>
+                            Developed and published two datasets for aesthetic-aware image cropping, evaluated on those
+                            datasets to establish a benchmark.
+                        </li>
+                    </ul>
+                </article>
+
+                <article class="item">
+                    <div class="item-header">
+                        <div>
+                            <h3>Technical Specialist</h3>
+                            <p>Vietnam-Singapore Industry 4.0 Innovation Center, Eastern International University</p>
+                        </div>
+                        <div class="item-meta">Oct 2025 - Present</div>
+                    </div>
+                    <ul>
+                        <li>
+                            Participated in developing AI for HVAC systems to control the school's AC, achieving fan speed
+                            accuracy of 91%.
+                        </li>
+                        <li>
+                            Integrated the YOLO11x model for people counting on the CCTV server for building management
+                            using DeepStream, achieving real-time human detection on multiple cameras.
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="section" id="projects">
+                <div class="section-header">
+                    <h2>Projects</h2>
+                </div>
+
+                <article class="project-block">
+                    <div class="item-header">
+                        <div>
+                            <h3 class="project-title">Aesthetic-Aware Image Cropping</h3>
+                        </div>
+                        <div class="item-meta">May 2024 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Project description: Build a pipeline for prompt-based image cropping using aesthetic-awareness.</li>
+                        <li>
+                            Methods:
+                            <ul class="sub-list">
+                                <li>Generative AI models like GPT and Stable Diffusion to generate synthetic datasets.</li>
+                                <li>Leveraged models such as CACNet, SAM2, and Grounding DINO for image cropping.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Results:
+                            <ul class="sub-list">
+                                <li>Published two datasets: 1,000 manually labeled images and 4,000 automatically labeled.</li>
+                                <li>mDSC: 0.522 using Gemini-2.0-Flash, and 0.453 using GPT-4o mini.</li>
+                            </ul>
+                        </li>
+                        <li>Tools: Python, GPT, Stable Diffusion, TensorFlow, Gemini, SAM2, Grounding DINO.</li>
+                    </ul>
+                </article>
+
+                <article class="project-block">
+                    <div class="item-header">
+                        <div>
+                            <h3 class="project-title">Using Dynamic Time Warping Stock Market Prediction</h3>
+                        </div>
+                        <div class="item-meta">Oct 2025 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Project description: Using Nvidia DeepStream for real-time human detection on CCTV.</li>
+                        <li>
+                            Methods:
+                            <ul class="sub-list">
+                                <li>Fine-tuning YOLO11x for maximum accuracy on human detection.</li>
+                                <li>Converted the model into TensorRT to boost FPS and apply batch processing.</li>
+                                <li>Integrated MediaMTX to transcode RTSP into low-latency WebRTC.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Results:
+                            <ul class="sub-list">
+                                <li>
+                                    Optimized YOLO11x inference using TensorRT FP16 precision, enabling the system to
+                                    scale from 1 to 10 concurrent video feeds on a single GPU while maintaining 20 FPS
+                                    real-time.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Tools: Python, DeepStream, Mediamtx, Caddy.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="section" id="skills">
+                <div class="section-header">
+                    <h2>Skills and Technologies</h2>
+                </div>
+                <div class="skills-list">
+                    <div><strong>Languages:</strong> C++, Python.</div>
+                    <div><strong>AI &amp; Computer Vision:</strong> NVIDIA DeepStream, TensorRT, PyTorch, OpenCV, Ultralytics YOLO, CUDA.</div>
+                    <div><strong>DevOps &amp; Deployment:</strong> Docker, Docker Compose, Git, Linux (Ubuntu/WSL).</div>
+                    <div><strong>Cloud Platforms:</strong> Azure (familiar with compute and basic networking).</div>
+                    <div><strong>IELTS:</strong> 8.0 (L: 8.5, R: 9.0, W: 7.0, S: 6.5).</div>
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 </html>
