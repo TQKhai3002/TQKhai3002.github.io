@@ -64,6 +64,11 @@
             padding: 1.5rem;
         }
 
+        main {
+            display: grid;
+            gap: 1rem;
+        }
+
         .topbar {
             position: sticky;
             top: 0;
@@ -115,6 +120,8 @@
 
         .hero,
         .section {
+            position: relative;
+            overflow: hidden;
             background: var(--surface);
             border: 1px solid var(--line);
             border-radius: var(--radius);
@@ -126,6 +133,9 @@
             margin-bottom: 1rem;
             text-align: center;
             padding: 2.4rem 2rem 2rem;
+            background:
+                linear-gradient(180deg, rgba(13, 90, 167, 0.06), rgba(255, 255, 255, 0) 45%),
+                var(--surface);
         }
 
         h1 {
@@ -240,7 +250,7 @@
         }
 
         .section {
-            margin-bottom: 1rem;
+            margin-bottom: 0;
         }
 
         .section-header {
@@ -270,20 +280,29 @@
         }
 
         .item {
-            padding: 1.1rem 0;
-            border-top: 1px solid var(--line);
+            padding: 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background:
+                linear-gradient(180deg, rgba(13, 90, 167, 0.02), rgba(255, 255, 255, 0) 100%),
+                #fff;
         }
 
-        .item:first-child {
-            padding-top: 0;
-            border-top: 0;
+        .item + .item {
+            margin-top: 0.9rem;
         }
 
         .item-header {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
+            align-items: flex-start;
             gap: 1rem;
             margin-bottom: 0.5rem;
+        }
+
+        .item-header > div:first-child {
+            min-width: 0;
         }
 
         .item-header h3 {
@@ -298,10 +317,21 @@
         }
 
         .item-meta {
-            min-width: 10rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+            flex: none;
+            min-width: fit-content;
             text-align: right;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             font-weight: 600;
+            white-space: nowrap;
+            padding: 0.38rem 0.72rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
         }
 
         ul {
@@ -310,12 +340,21 @@
             line-height: 1.7;
         }
 
+        .project-block {
+            padding: 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background:
+                linear-gradient(180deg, rgba(13, 90, 167, 0.03), rgba(255, 255, 255, 0) 100%),
+                #fff;
+        }
+
         .project-title {
             color: var(--accent);
         }
 
         .project-block + .project-block {
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .sub-list {
@@ -327,8 +366,9 @@
         }
 
         .skills-list {
-            flex-direction: column;
-            gap: 0.7rem;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.85rem;
             color: var(--text);
         }
 
@@ -341,13 +381,43 @@
                 linear-gradient(180deg, rgba(13, 90, 167, 0.03), transparent 100%);
         }
 
-        .project-block,
         .skills-list > div {
-            position: relative;
+            padding: 1rem 1.05rem;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.88);
+        }
+
+        .focus-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1.1rem;
+        }
+
+        .focus-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 0.8rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.82);
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .compact-item .item-header {
+            flex-direction: column;
+            gap: 0.7rem;
         }
 
         @media (max-width: 860px) {
             .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-list {
                 grid-template-columns: 1fr;
             }
 
@@ -360,6 +430,9 @@
             .item-meta {
                 min-width: 0;
                 text-align: left;
+                font-size: 0.84rem;
+                padding: 0.34rem 0.68rem;
+                margin-top: 0.15rem;
             }
 
             .nav {
@@ -397,6 +470,10 @@
             .hero-copy {
                 margin-left: 0;
                 margin-right: 0;
+            }
+
+            .focus-tags {
+                justify-content: flex-start;
             }
         }
     </style>
@@ -482,13 +559,18 @@
                         and production-oriented pipelines. My recent work spans aesthetic-aware image cropping, real-time
                         detection systems, and ML-driven automation across research and applied engineering settings.
                     </p>
+                    <div class="focus-tags" aria-label="Focus areas">
+                        <span class="focus-tag">Computer Vision</span>
+                        <span class="focus-tag">Model Deployment</span>
+                        <span class="focus-tag">ML Pipelines</span>
+                    </div>
                 </section>
 
                 <section class="section" id="education">
                     <div class="section-header">
                         <h2>Education</h2>
                     </div>
-                    <article class="item">
+                    <article class="item compact-item">
                         <div class="item-header">
                             <div>
                                 <h3>University of Information Technology VNUHCM</h3>
